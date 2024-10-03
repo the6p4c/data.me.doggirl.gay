@@ -17538,13 +17538,13 @@ function Post({ post }) {
                 children: "posted"
               }, undefined, false, undefined, this),
               /* @__PURE__ */ jsx_dev_runtime.jsxDEV("dd", {
-                children: post.meta.posted
+                children: post.meta.posted.toISOString()
               }, undefined, false, undefined, this),
               /* @__PURE__ */ jsx_dev_runtime.jsxDEV("dt", {
                 children: "edited"
               }, undefined, false, undefined, this),
               /* @__PURE__ */ jsx_dev_runtime.jsxDEV("dd", {
-                children: post.meta.edited
+                children: post.meta.edited.toISOString()
               }, undefined, false, undefined, this)
             ]
           }, undefined, true, undefined, this),
@@ -17577,9 +17577,10 @@ function Posts({ posts }) {
               /* @__PURE__ */ jsx_dev_runtime.jsxDEV("span", {
                 children: [
                   "(posted ",
-                  post.meta.posted,
-                  ", edited ",
-                  post.meta.edited,
+                  post.meta.posted.toISOString(),
+                  ", edited",
+                  " ",
+                  post.meta.edited.toISOString(),
                   ")"
                 ]
               }, undefined, true, undefined, this)
