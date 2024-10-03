@@ -1,0 +1,26 @@
+on: push
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+      - name: Build
+        run: node ${{ github.workspace }}/generator.mjs ${{ github.workspace }}/posts build
+      - name: Create pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+  deploy:
+    name: Deploy
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy pages
+        uses: actions/deploy-pages@v4
